@@ -38,6 +38,10 @@ dev = [
     {%- endif %}
     "ruff>=0.14.14",
     "bandit[toml]>=1.8.0",
+    "pip-audit>=2.9.0",
+    "vulture>=2.14",
+    "hypothesis>=6.131.0",
+    "mutmut>=3.3.0",
     {% if cookiecutter.mkdocs == 'y' %}"mkdocs>=1.6.1",
     "mkdocs-material>=9.7.1",
     "mkdocstrings[python]>=1.0.2",{% endif %}
@@ -89,6 +93,8 @@ addopts = "--strict-markers --disable-warnings"
 markers = [
     "coverage: marks tests as critical for coverage (deselect with '-m \"not coverage\"')",
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks integration tests (deselect with '-m \"not integration\"')",
+    "property: marks property-based tests using Hypothesis (deselect with '-m \"not property\"')",
 ]
 
 [tool.ruff]

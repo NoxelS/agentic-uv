@@ -17,6 +17,13 @@ check: ## Run code quality tools.
 	@uv run deptry {% if cookiecutter.layout == "src" %}src{% else %}.{% endif %}
 {%- endif %}
 
+.PHONY: audit
+audit: ## Run security and dependency audits (bandit + pip-audit)
+	@echo "🚀 Security audit: Running bandit"
+	@uv run bandit -r {% if cookiecutter.layout == "src" %}src{% else %}{{cookiecutter.project_slug}}{% endif %} -c pyproject.toml
+	@echo "🚀 Dependency vulnerability scan: Running pip-audit"
+	@uv run pip-audit
+
 .PHONY: test
 test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"
@@ -40,6 +47,22 @@ test-coverage: ## Run tests with coverage and generate HTML report
 test-parallel: ## Run tests in parallel for faster execution
 	@echo "🚀 Running tests in parallel with pytest-xdist"
 	@uv run python -m pytest -n auto
+
+.PHONY: test-integration
+test-integration: ## Run integration tests only
+	@echo "🚀 Running integration tests"
+	@uv run python -m pytest tests/integration/ -v
+
+.PHONY: test-property
+test-property: ## Run property-based tests with Hypothesis
+	@echo "🚀 Running property-based tests with Hypothesis"
+	@uv run python -m pytest tests/test_properties.py -v
+
+.PHONY: test-mutation
+test-mutation: ## Run mutation tests with mutmut
+	@echo "🚀 Running mutation tests with mutmut"
+	@uv run mutmut run
+	@uv run mutmut results
 
 
 .PHONY: build
