@@ -259,8 +259,21 @@ This template is designed to be both:
 2. **Agent-ready** - Generated projects include `.claude/` so Claude can help with development
 3. **Best-practices-first** - Strict linting, type checking, and testing enforced from day one
 
+### Session Flow Requirements
+
+**Important:** When working on tasks, do NOT complete sessions with a simple closing message. Instead:
+- Always end each task with a **question tool call** (using the `question` tool)
+- Questions should be contextual and offer the user clear next steps
+- This keeps the conversation interactive and gives users agency over what happens next
+- Examples of good closing questions:
+  - "Would you like me to run the tests to verify these changes?"
+  - "Should I commit these changes or would you like to review them first?"
+  - "Do you want me to generate a test project to verify the template works with these changes?"
+  - "Would you like me to update the documentation to reflect these changes?"
+
 When helping maintain this template:
 - Always test changes by generating a sample project
-- Verify `.claude/` files Are properly templated (no hardcoded paths)
+- Verify `.claude/` files are properly templated (no hardcoded paths)
 - Keep Jinja2 conditionals unbroken (many branches for optional features)
 - Document changes in root docs for other maintainers
+- **End sessions with a question**, not a statement

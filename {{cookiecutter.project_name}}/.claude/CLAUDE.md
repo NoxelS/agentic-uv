@@ -25,7 +25,7 @@ All user-facing code goes in `{{cookiecutter.project_slug}}/` directory. It's co
 
 Please review these before starting development:
 
-- @.claude/rules/agent-interaction.md — Required protocol for agent interaction (continuous engagement, no premature termination)
+- @.claude/rules/agent-interaction.md — Required protocol for agent interaction (continuous engagement, no premature session termination)
 - @.claude/rules/commit-guidelines.md — Conventional commits standards for all commits
 - @.claude/rules/code-style.md — Code organization and naming conventions
 - @.claude/rules/testing.md — Testing patterns and coverage expectations
