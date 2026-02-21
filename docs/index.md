@@ -22,7 +22,6 @@ This is a modern Cookiecutter template that can be used to initiate a Python pro
 - Documentation with [MkDocs](https://www.mkdocs.org/)
 - Compatibility testing for multiple versions of Python with [tox-uv](https://github.com/tox-dev/tox-uv)
 - Containerization with [Docker](https://www.docker.com/) or [Podman](https://podman.io/)
-- Development environment with [VSCode devcontainers](https://code.visualstudio.com/docs/devcontainers/containers)
 
 An example of a repository generated with this package can be found [here](https://github.com/fpgmaas/agentic-uv-example).
 

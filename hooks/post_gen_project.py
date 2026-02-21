@@ -42,9 +42,6 @@ if __name__ == "__main__":
         if "{{cookiecutter.include_github_actions}}" == "y":
             remove_file(".github/workflows/validate-codecov-config.yml")
 
-    if "{{cookiecutter.devcontainer}}" != "y":
-        remove_dir(".devcontainer")
-
     # Remove the example foo.py file - users start with a clean project
     remove_file("{{cookiecutter.project_slug}}/foo.py")
 

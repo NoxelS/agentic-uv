@@ -9,7 +9,6 @@ MINIMAL = {
     "mkdocs": "n",
     "codecov": "n",
     "dockerfile": "n",
-    "devcontainer": "n",
 }
 
 COMBINATIONS = [
@@ -34,7 +33,6 @@ DEFAULTS = {
     "mkdocs": "y",
     "codecov": "y",
     "dockerfile": "y",
-    "devcontainer": "y",
     "type_checker": "mypy",
 }
 
@@ -84,11 +82,6 @@ class TestStructure:
             assert project.has_file("codecov.yaml")
         else:
             assert not project.has_file("codecov.yaml")
-
-        if effective["devcontainer"] == "y":
-            assert project.has_dir(".devcontainer")
-        else:
-            assert not project.has_dir(".devcontainer")
 
         if effective["include_github_actions"] == "y":
             assert project.has_dir(".github")

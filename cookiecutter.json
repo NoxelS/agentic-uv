@@ -33,10 +33,6 @@
     "y",
     "n"
   ],
-  "devcontainer": [
-    "y",
-    "n"
-  ],
   "type_checker": [
     "mypy",
     "ty"
