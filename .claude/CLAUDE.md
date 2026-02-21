@@ -101,16 +101,22 @@ agentic-uv/
    - New docs for agent development features
    - Links to `.claude/rules/` in Makefile output (`make claude-info`)
 
-## Agent Development Guidelines
+## Available OpenCode Skills
 
-Before working on this project with AI agents, please review the following critical guidelines:
+The `.claude/skills/` directory contains reusable OpenCode skills for agent-based development:
 
-- @.claude/rules/agent-interaction.md — Required protocol for agent interaction (continuous engagement, no premature termination)
-- @.claude/rules/commit-guidelines.md — Conventional commits standards for all commits
-- @.claude/rules/contributing.md — Contribution guidelines and workflow
-- @.claude/rules/best-practices.md — Code quality and security standards
-- @.claude/rules/code-style.md — Type hints, formatting, and naming conventions
-- @.claude/rules/deployment.md — CI/CD and release procedures
+### Core Validation Skills
+- **lint-project** - Run code quality checks (ruff, mypy, pre-commit)
+- **test-project** - Execute test suite with coverage reporting
+- **check-project** - Full validation pipeline (lint + test)
+- **post-change-validation** - Smart skill recommendation engine
+
+### Development Strategy Skills
+- **coding-standards** - Detect code smells, anti-patterns, and readability issues
+- **implementation-approach** - Select implementation strategy with risk assessment
+- **subagents-orchestration-guide** - Coordinate subagent task distribution
+
+These skills are discoverable by OpenCode and can be loaded dynamically to guide development workflows.
 
 ## How to Contribute
 

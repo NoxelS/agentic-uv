@@ -32,6 +32,23 @@ Please review these before starting development:
 - @.claude/rules/best-practices.md — Security and quality standards
 - @.claude/rules/deployment.md — CI/CD workflows and release process
 
+## Available OpenCode Skills
+
+The `.claude/skills/` directory contains reusable OpenCode skills for agent-based development:
+
+### Core Validation Skills
+- **lint-project** - Run code quality checks (ruff, mypy, pre-commit)
+- **test-project** - Execute test suite with coverage reporting
+- **check-project** - Full validation pipeline (lint + test)
+- **post-change-validation** - Smart skill recommendation engine
+
+### Development Strategy Skills
+- **coding-standards** - Detect code smells, anti-patterns, and readability issues
+- **implementation-approach** - Select implementation strategy with risk assessment
+- **subagents-orchestration-guide** - Coordinate subagent task distribution
+
+These skills are discoverable by OpenCode and can be loaded dynamically to guide development workflows.
+
 ## Quick Commands
 
 - `make install` — Set up development environment
