@@ -262,7 +262,7 @@ This template is designed to be both:
 ### Session Flow Requirements
 
 **Important:** When working on tasks, do NOT complete sessions with a simple closing message. Instead:
-- Always end each task with a **question tool call** (using asking a clear next-step question in Copilot Chat)
+- Always end each task with a **question tool call** (using the `askQuestion` tool)
 - Questions should be contextual and offer the user clear next steps
 - This keeps the conversation interactive and gives users agency over what happens next
 - Examples of good closing questions:

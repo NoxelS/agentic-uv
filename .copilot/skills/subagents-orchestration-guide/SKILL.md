@@ -241,7 +241,7 @@ Stop autonomous execution and escalate to user in the following cases:
 
 ### Basic Principles
 - **Stopping is mandatory**: Always wait for human response at the following timings
-- **Use AskUserQuestion**: Present confirmations and questions at all Stop points
+- **Use `askQuestion` tool**: Present confirmations and questions at all Stop points
 - **Confirmation -> Agreement cycle**: After document generation, proceed to next step after agreement or fix instructions in update mode
 - **Specific questions**: Make decisions easy with options (A/B/C) or comparison tables
 - **Dialogue over efficiency**: Get confirmation at early stages to prevent rework
