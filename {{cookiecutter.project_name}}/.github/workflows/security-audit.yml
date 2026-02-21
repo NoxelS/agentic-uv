@@ -1,0 +1,32 @@
+name: Security Audit
+
+on:
+  schedule:
+    # Run weekly on Mondays at 00:00 UTC
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up the environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Run bandit security check
+        run: uv run bandit -r . -ll
+        continue-on-error: true
+
+      - name: Audit dependencies with pip-audit
+        run: uv run pip-audit --desc
+        continue-on-error: true
+
+      - name: Create security report
+        run: |
+          echo "## Security Audit Report" >> $GITHUB_STEP_SUMMARY
+          echo "- Bandit: Checks for common security issues" >> $GITHUB_STEP_SUMMARY
+          echo "- pip-audit: Checks for known vulnerabilities in dependencies" >> $GITHUB_STEP_SUMMARY
+          echo "Run \`make tox-security\` locally for detailed results" >> $GITHUB_STEP_SUMMARY

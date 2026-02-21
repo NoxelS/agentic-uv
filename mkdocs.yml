@@ -1,0 +1,66 @@
+site_name: agentic-uv
+repo_url: https://github.com/noelschwabenland/agentic-uv
+site_url: https://github.com/noelschwabenland/agentic-uv
+site_description: A modern cookiecutter template for Python projects with agent-based development, uv dependency management, and strict code quality standards
+site_author: Noel Schwabenland
+edit_uri: edit/main/docs/
+repo_name: noelschwabenland/agentic-uv
+copyright: Maintained by <a href="https://github.com/noelschwabenland">Noel Schwabenland</a>.
+
+nav:
+  - Home: index.md
+  - Features:
+      - Agent-Based Development: features/agent-development.md
+      - Modern Best Practices: features/best-practices.md
+      - CI/CD with Github Actions: features/cicd.md
+      - Linting & code quality: features/linting.md
+      - Makefile: features/makefile.md
+      - Dependency management with uv: features/uv.md
+      - Publishing to PyPI: features/publishing.md
+      - Testing with Pytest: features/pytest.md
+      - Test coverage with codecov: features/codecov.md
+      - Documentation with MkDocs: features/mkdocs.md
+      - Compatibility testing with Tox: features/tox.md
+      - Containerization with Docker or Podman: features/docker.md
+      - Devcontainer with VSCode: features/devcontainer.md
+  - Tutorial: tutorial.md
+  - Prompt Arguments: prompt_arguments.md
+plugins:
+  - search
+extra_css:
+  - stylesheets/extra.css
+theme:
+  name: material
+  feature:
+    tabs: true
+  palette:
+    # Note: Using the system theme works with the insiders version
+    # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#automatic-light-dark-mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: astral-light
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: astral-dark
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/noelschwabenland/agentic-uv
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/agentic-uv/
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
