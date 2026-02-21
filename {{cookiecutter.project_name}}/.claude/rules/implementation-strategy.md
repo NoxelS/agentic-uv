@@ -1,8 +1,3 @@
-"""Implementation Strategy & Risk Assessment
-
-This guide provides a systematic approach to implementing features and making architectural decisions. It helps you avoid common pitfalls and think critically about trade-offs.
-"""
-
 # Implementation Strategy & Risk Assessment
 
 ## Systematic Implementation Process

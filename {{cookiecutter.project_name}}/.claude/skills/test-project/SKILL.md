@@ -45,7 +45,7 @@ uv run python -m pytest --cov --cov-config=pyproject.toml --cov-report=xml tests
 
 **Coverage requirements**:
 - Minimum 80% code coverage (`fail_under=80` in pyproject.toml)
-- HTML reports generated to `htmlcov/`
+- HTML reports generated to `coverage_html_report/`
 - XML reports for CI/CD integration
 
 ## What I report

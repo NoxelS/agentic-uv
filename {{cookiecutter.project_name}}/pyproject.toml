@@ -152,8 +152,6 @@ preview = true
 
 [tool.bandit]
 exclude_dirs = ["tests", "venv"]
-skips = []
-tests = ["B201", "B301", "B302", "B303", "B304", "B305", "B306", "B601", "B602", "B603", "B604", "B605", "B606", "B607", "B608", "B609", "B610", "B611", "B612", "B613", "B614", "B615", "B616", "B617", "B618", "B619", "B620", "B621", "B622", "B623", "B624"]
 
 {% if cookiecutter.codecov == "y" -%}
 [tool.coverage.report]

@@ -231,7 +231,7 @@ pytest tests/test_combinations.py
 ### Add New GitHub Actions Workflow
 
 1. Create in `{{cookiecutter.project_name}}/.github/workflows/`
-2. Use Jinja2 to conditionally include based on `cookiecutter.yml` vars
+2. Use Jinja2 to conditionally include based on `cookiecutter.json` vars
 3. Update `hooks/post_gen_project.py` to remove if not needed
 4. Document in `.claude/rules/deployment.md` and root docs
 

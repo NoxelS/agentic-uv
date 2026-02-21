@@ -24,8 +24,8 @@ plugins:
             ]
 theme:
   name: material
-  feature:
-    tabs: true
+  features:
+    - navigation.tabs
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default

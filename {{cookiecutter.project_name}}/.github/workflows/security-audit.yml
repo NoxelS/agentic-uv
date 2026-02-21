@@ -29,4 +29,4 @@ jobs:
           echo "## Security Audit Report" >> $GITHUB_STEP_SUMMARY
           echo "- Bandit: Checks for common security issues" >> $GITHUB_STEP_SUMMARY
           echo "- pip-audit: Checks for known vulnerabilities in dependencies" >> $GITHUB_STEP_SUMMARY
-          echo "Run \`make tox-security\` locally for detailed results" >> $GITHUB_STEP_SUMMARY
+          echo "Run \`make audit\` locally for detailed results" >> $GITHUB_STEP_SUMMARY
