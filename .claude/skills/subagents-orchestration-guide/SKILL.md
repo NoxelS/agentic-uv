@@ -147,42 +147,6 @@ According to scale determination:
 1. Create simplified plan **[Stop: Batch approval]**
 2. Direct implementation → Completion report
 
-## Cross-Layer Orchestration
-
-When requirement-analyzer determines the feature spans multiple layers (backend + frontend) via `crossLayerScope`, the following extensions apply. Step numbers below follow the large-scale flow. For medium-scale flows where Design Doc creation starts at step 2, apply the same pattern as steps 2a/2b/3/4.
-
-### Design Phase Extensions
-
-Replace the standard Design Doc creation step with per-layer creation:
-
-| Step | Agent | Purpose |
-|------|-------|---------|
-| 6a | technical-designer | Backend Design Doc |
-| 6b | technical-designer-frontend | Frontend Design Doc |
-| 7 | document-reviewer ×2 | Review each Design Doc separately |
-| 8 | design-sync | Cross-layer consistency verification **[Stop]** |
-
-**Layer Context in Design Doc Creation**:
-- **Backend**: "Create a backend Design Doc from PRD at [path]. Focus on: API contracts, data layer, business logic, service architecture."
-- **Frontend**: "Create a frontend Design Doc from PRD at [path]. Reference backend Design Doc at [path] for API contracts and Integration Points. Focus on: component hierarchy, state management, UI interactions, data fetching."
-
-**design-sync**: Use frontend Design Doc as source. design-sync auto-discovers other Design Docs in `docs/design/` for comparison.
-
-### Work Planning with Multiple Design Docs
-
-Pass all Design Docs to work-planner with vertical slicing instruction:
-- Provide all Design Doc paths explicitly
-- Instruct: "Compose phases as vertical feature slices — each phase should contain both backend and frontend work for the same feature area, enabling early integration verification per phase."
-
-### Layer-Aware Agent Routing
-
-During autonomous execution, route agents by task filename pattern:
-
-| Filename Pattern | Executor | Quality Fixer |
-|---|---|---|
-| `*-task-*` or `*-backend-task-*` | task-executor | quality-fixer |
-| `*-frontend-task-*` | task-executor-frontend | quality-fixer-frontend |
-
 ## Autonomous Execution Mode
 
 ### Authority Delegation
@@ -194,7 +158,7 @@ During autonomous execution, route agents by task filename pattern:
 
 ### Step 2 Execution Details
 - `status: escalation_needed` or `status: blocked` -> Escalate to user
-- `testsAdded` contains `*.int.test.ts` or `*.e2e.test.ts` -> Execute **integration-test-reviewer**
+- `testsAdded` contains `*.int.test.py` or `*.e2e.test.py` -> Execute **integration-test-reviewer**
   - If verdict is `needs_revision` -> Return to task-executor with `requiredFixes`
   - If verdict is `approved` -> Proceed to quality-fixer
 
@@ -241,7 +205,7 @@ Stop autonomous execution and escalate to user in the following cases:
 
 ### Basic Principles
 - **Stopping is mandatory**: Always wait for human response at the following timings
-- **Use AskUserQuestion**: Present confirmations and questions at all Stop points
+- **Use `question` tool**: Present confirmations and questions at all Stop points
 - **Confirmation -> Agreement cycle**: After document generation, proceed to next step after agreement or fix instructions in update mode
 - **Specific questions**: Make decisions easy with options (A/B/C) or comparison tables
 - **Dialogue over efficiency**: Get confirmation at early stages to prevent rework

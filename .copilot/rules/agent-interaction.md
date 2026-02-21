@@ -20,19 +20,19 @@ Agents MUST follow this protocol to ensure continuous user engagement, prevent p
 
 ## Rule 2: Request User Direction Before Finalizing
 
-**Requirement:** Before ending any work session, call asking a clear next-step question in Copilot Chat to explicitly ask the user what they would like to do next.
+**Requirement:** Before ending any work session, call the `askQuestion` tool to explicitly ask the user what they would like to do next.
 
 **Rationale:** This ensures the user has agency over the development workflow and can steer the project toward their actual needs. It also surfaces implicit requirements that weren't initially stated.
 
 **Implementation:**
-- Use asking a clear next-step question in Copilot Chat exactly once before finalizing
+- Use the `askQuestion` tool exactly once before finalizing
 - Phrase the question clearly: "What would you like to do next?"
 - Ask in a natural, conversational way
 - Wait for user response before proceeding further
 
 ## Rule 3: Provide Actionable Next-Step Options
 
-**Requirement:** When calling asking a clear next-step question in Copilot Chat, provide specific, actionable options for the user to choose from.
+**Requirement:** When calling the `askQuestion` tool, provide specific, actionable options for the user to choose from.
 
 **Rationale:** Offering concrete options reduces decision paralysis and guides the user toward productive next steps. Options should include skill loading, additional features, refinement, testing, or documentation.
 
@@ -47,7 +47,7 @@ Agents MUST follow this protocol to ensure continuous user engagement, prevent p
   - Review and optimize the codebase for [concern]
   - Deploy or integrate with external systems
   - Create a pull request and request review
-- Allow custom options via "Type your own answer" (available by default in asking a clear next-step question in Copilot Chat)
+- Allow custom options via "Type your own answer" (available by default in the `askQuestion` tool)
 - Tailor options to the current project context and task
 
 ## Rule 4: Repeat Indefinitely Until User Explicitly Ends
@@ -101,7 +101,7 @@ Explore: [Returns findings from codebase search]
 Agent: [Receive findings]
 Agent: [Use explore subagent results to inform decisions]
 Agent: [Complete implementation/analysis task]
-Agent: [Call question tool] "What would you like to do next?"
+Agent: [Call askQuestion tool] "What would you like to do next?"
 User: [Choose option or provide custom direction]
 ... (repeat indefinitely)
 ```
@@ -128,8 +128,8 @@ These rules do NOT override:
 | Rule | Action | Tool |
 |------|--------|------|
 | 1 | Don't stop when task appears complete | N/A |
-| 2 | Ask user what to do next | `question` tool |
-| 3 | Provide 3-5 actionable options | `question` tool options |
+| 2 | Ask user what to do next | `askQuestion` tool |
+| 3 | Provide 3-5 actionable options | `askQuestion` tool options |
 | 4 | Repeat until user explicitly ends | Continuous loop |
 | 5 | Spawn explore subagent for codebase analysis | `task` tool (subagent_type: "explore") |
 

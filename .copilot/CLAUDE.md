@@ -118,6 +118,27 @@ The `.copilot/skills/` directory contains reusable OpenCode skills for agent-bas
 
 These skills are discoverable by OpenCode and can be loaded dynamically to guide development workflows.
 
+## Subagent Definitions
+
+The `.copilot/agents/` directory contains prompt definitions for all subagents referenced by the `subagents-orchestration-guide` skill:
+
+### Implementation Support Agents
+- **task-executor** - Executes a single implementation task and returns structured JSON
+- **quality-fixer** - Runs the full QA pipeline and self-heals until all checks pass
+- **task-decomposer** - Breaks a work plan into atomic, ordered implementation tasks
+- **integration-test-reviewer** - Reviews integration/E2E tests against skeletons
+
+### Document Creation Agents
+- **requirement-analyzer** - Analyzes requirements and determines work scale
+- **prd-creator** - Creates or updates Product Requirements Documents
+- **technical-designer** - Creates ADRs and Design Docs from approved requirements
+- **work-planner** - Creates phased implementation work plans from Design Docs
+- **document-reviewer** - Reviews documents for quality and completeness
+- **design-sync** - Verifies consistency across all Design Docs for a feature
+- **acceptance-test-generator** - Generates integration/E2E test skeletons from Design Doc ACs
+
+Each agent definition specifies its role, input expectations, responsibilities, output JSON format, and prohibited actions. The orchestrator (main Copilot session) coordinates these agents — agents cannot call each other directly.
+
 ## How to Contribute
 
 ### Creating New Generated Projects
@@ -210,7 +231,7 @@ pytest tests/test_combinations.py
 ### Add New GitHub Actions Workflow
 
 1. Create in `{{cookiecutter.project_name}}/.github/workflows/`
-2. Use Jinja2 to conditionally include based on `cookiecutter.yml` vars
+2. Use Jinja2 to conditionally include based on `cookiecutter.json` vars
 3. Update `hooks/post_gen_project.py` to remove if not needed
 4. Document in `.copilot/rules/deployment.md` and root docs
 
@@ -262,7 +283,7 @@ This template is designed to be both:
 ### Session Flow Requirements
 
 **Important:** When working on tasks, do NOT complete sessions with a simple closing message. Instead:
-- Always end each task with a **question tool call** (using asking a clear next-step question in Copilot Chat)
+- Always end each task with a **question tool call** (using the `askQuestion` tool)
 - Questions should be contextual and offer the user clear next steps
 - This keeps the conversation interactive and gives users agency over what happens next
 - Examples of good closing questions:

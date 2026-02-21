@@ -25,3 +25,9 @@ repos:
       - id: conventional-pre-commit
         stages: [commit-msg]
 
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: "v2.14"
+    hooks:
+      - id: vulture
+        args: ["--min-confidence", "80"]
+
