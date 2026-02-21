@@ -118,6 +118,27 @@ The `.copilot/skills/` directory contains reusable OpenCode skills for agent-bas
 
 These skills are discoverable by OpenCode and can be loaded dynamically to guide development workflows.
 
+## Subagent Definitions
+
+The `.copilot/agents/` directory contains prompt definitions for all subagents referenced by the `subagents-orchestration-guide` skill:
+
+### Implementation Support Agents
+- **task-executor** - Executes a single implementation task and returns structured JSON
+- **quality-fixer** - Runs the full QA pipeline and self-heals until all checks pass
+- **task-decomposer** - Breaks a work plan into atomic, ordered implementation tasks
+- **integration-test-reviewer** - Reviews integration/E2E tests against skeletons
+
+### Document Creation Agents
+- **requirement-analyzer** - Analyzes requirements and determines work scale
+- **prd-creator** - Creates or updates Product Requirements Documents
+- **technical-designer** - Creates ADRs and Design Docs from approved requirements
+- **work-planner** - Creates phased implementation work plans from Design Docs
+- **document-reviewer** - Reviews documents for quality and completeness
+- **design-sync** - Verifies consistency across all Design Docs for a feature
+- **acceptance-test-generator** - Generates integration/E2E test skeletons from Design Doc ACs
+
+Each agent definition specifies its role, input expectations, responsibilities, output JSON format, and prohibited actions. The orchestrator (main Copilot session) coordinates these agents — agents cannot call each other directly.
+
 ## How to Contribute
 
 ### Creating New Generated Projects
