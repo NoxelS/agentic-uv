@@ -6,7 +6,13 @@
 
 A [Cookiecutter](https://cookiecutter.readthedocs.io) template for Python projects that enforces best practices from the first commit — and ships AI coding agents that already know and follow every one of them.
 
----
+## Quickstart 🚀
+
+Navigate to the directory where you want to create your project, then run:
+
+```bash
+uvx cookiecutter https://github.com/NoxelS/agentic-uv.git
+```
 
 ## What this is
 
