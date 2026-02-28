@@ -29,22 +29,22 @@ dev = [
     "pytest-cov>=7.0.0",
     "pytest-xdist>=3.6.0",
     "pre-commit>=4.5.1",
-    "tox-uv>=1.29.0",
+    "tox-uv>=1.33.0",
     {% if cookiecutter.deptry == 'y' %}"deptry>=0.24.0",{% endif %}
     {% if cookiecutter.type_checker == "mypy" -%}
         "mypy>=1.19.1",
     {%- elif cookiecutter.type_checker == "ty" -%}
-        "ty>=0.0.14",
+        "ty>=0.0.19",
     {%- endif %}
-    "ruff>=0.14.14",
+    "ruff>=0.15.4",
     "bandit[toml]>=1.8.0",
     "pip-audit>=2.9.0",
     "vulture>=2.14",
     "hypothesis>=6.131.0",
     "mutmut>=3.3.0",
     {% if cookiecutter.mkdocs == 'y' %}"mkdocs>=1.6.1",
-    "mkdocs-material>=9.7.1",
-    "mkdocstrings[python]>=1.0.2",{% endif %}
+    "mkdocs-material>=9.7.3",
+    "mkdocstrings[python]>=1.0.3",{% endif %}
 ]
 
 [build-system]
